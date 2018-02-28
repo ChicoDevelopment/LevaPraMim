@@ -19,6 +19,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import math.levapramim.modelo.Veiculo;
+import math.levapramim.telas.MainActivity;
 
 /**
  * Created by txring on 21/02/2018.
@@ -26,6 +27,7 @@ import math.levapramim.modelo.Veiculo;
 
 public class VeiculoDAO extends Fragment {
 
+    private Context c = MainActivity.showContext();
     private String pesquisarUrl = "";
     private String alterarUrl = "";
     private String excluirUrl = "";
@@ -34,6 +36,7 @@ public class VeiculoDAO extends Fragment {
     private boolean confirmar;
     private Veiculo veiculo = new Veiculo();
 
+
     public Veiculo pesquisar(Veiculo v) {
 
         Map<String, String> params = new HashMap();
@@ -41,7 +44,7 @@ public class VeiculoDAO extends Fragment {
 
         JSONObject parameters = new JSONObject(params);
 
-        requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
+        requestQueue = Volley.newRequestQueue(c);
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST,
                 pesquisarUrl, parameters, new Response.Listener<JSONObject>() {
@@ -74,7 +77,7 @@ public class VeiculoDAO extends Fragment {
 
         JSONObject parameters = new JSONObject(params);
 
-        requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
+        requestQueue = Volley.newRequestQueue(c);
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST,
                 alterarUrl, parameters, new Response.Listener<JSONObject>() {
@@ -101,7 +104,7 @@ public class VeiculoDAO extends Fragment {
 
         JSONObject parameters = new JSONObject(params);
 
-        requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
+        requestQueue = Volley.newRequestQueue(c);
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST,
                 excluirUrl, parameters, new Response.Listener<JSONObject>() {
@@ -121,7 +124,7 @@ public class VeiculoDAO extends Fragment {
         return confirmar;
     }
 
-    public boolean inserir(final Veiculo v, final Context c) {
+    public boolean inserir(final Veiculo v) {
 
         requestQueue = Volley.newRequestQueue(c);
 
