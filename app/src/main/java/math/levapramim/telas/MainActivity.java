@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        System.out.println("I'm goig to hell");
+        System.out.println("I'm goig to HELL");
 
         veiculoDAO = new VeiculoDAO();
         marca = findViewById(R.id.editText);
